@@ -1,0 +1,76 @@
+.dropdown
+{
+    background-color: #4c5153;
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+    margin: 3%;
+    outline:none;
+    border: 1px solid #4c5153;
+    width: 80%;
+    font-weight: 500;
+    font-family: Arial;
+}
+.card
+{
+    background-color: #312a37;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    width:120%;
+}
+.button
+{
+    background-color: #4c5153;
+    color: white;
+    line-height: 2.5em;
+    outline:none;
+    border: 1px solid #4c5153;
+    font-size: 0.9rem;
+    margin: 3%;
+}
+button:hover
+{
+    background-color: #62686b;
+}
+button:active
+{
+    background-color: #33557f;
+}
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+  }
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 90%; /* Full-width */
+    height: 20px; /* Specified height */
+    background: #a884b1; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #342737; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
