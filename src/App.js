@@ -1,26 +1,35 @@
 
 import './App.css';
-import Layer from './Layer/Layer';
-import Pallete from './Pallete/Pallete.jsx';
+import Layer from './Components/Layer';
+import Pallete from './Components/Pallete.jsx';
 import Text from './Utilities/Text';
 import Button from './Utilities/Button';
-import Image from './Utilities/Image';
 import DropDown from './Utilities/DropDown';
 import React,{useState} from 'react';
+import Overlay from './Components/Overlay';
+import {OverlayContext} from './Contexts/OverlayContext';
+import { DataContext } from './Contexts/DataContext';
 
-function App() {
+function App() 
+{
   const resolutions_list = [
     "4K: 3840x2160",
     "Full HD: 1920x1080",
     "HD: 1280x720"
     ];
-  const [request, setRequest] = useState({"pallete": "random", 
-  "layer1": {"Styles":"random","Shape":"random","Complexity":"random","size":"random"},
-  "layer2": {"Styles":"random","Shape":"random","Complexity":"random","Size":"random"},
-  "overlay": "random"});
-  // console.log(request.pallete);
-  // request.pallete="kl";
-  // console.log(request.pallete);
+  const [overlay, setOverlay] = useState("0");
+
+  const [request, setRequest] = useState({"pallete": 0, 
+  "layer1": {"Styles":0,"Shape":0,"Complexity":20,"Size":225},
+  "layer2": {"Styles":0,"Shape":0,"Complexity":20,"Size":225},
+  "overlay": overlay});
+  //create a sample function to change layer1 to default in request
+  const changeLayer1 = () => {
+    setRequest({...request, "pallete": 0});
+  }
+  const printRequest = () => {
+    console.log(request);
+  }
   return (
     <div className="App">
       {/* <header className="App-header">
@@ -28,10 +37,12 @@ function App() {
       </header> */}
       <div id='left' className='rows'>
         <Text Text="OPTIONS" Size="1.4rem"/>
-        <Pallete state={request} changeState={setRequest}></Pallete>
-        <Layer Layer="ONE" state={request} changeState={setRequest} name="layer1"/>
-        <Layer Layer="TWO" state={request} changeState={setRequest} name="layer2"/>
-        <Button Text="Generate"></Button>
+        <DataContext.Provider value={{request,setRequest}}>
+          <Pallete></Pallete>
+          <Layer Layer="ONE" name="layer1"/>
+          <Layer Layer="TWO" name="layer2"/>
+        </DataContext.Provider>
+        <Button Text="Generate" onClick={printRequest}></Button>
       </div>
       <div id='center' className='rows'>
         <Text Text="ABSTRACT ART GENERATOR" Size="1.8rem" Weight="bolder"/>
@@ -41,16 +52,12 @@ function App() {
       <div id='right' className='rows'>
         <div id='right-bottom'>
           <Text Text="OVERLAY " Size="1.4rem"/>
-          <div id='overlay'>
-            <Image src="https://picsum.photos/150/100" alt="overlay"/>
-            <Image src="https://picsum.photos/150/100" alt="overlay"/>
-            <Image src="https://picsum.photos/150/100" alt="overlay"/>
-            <Image src="https://picsum.photos/150/100" alt="overlay"/>
-            <Image src="https://picsum.photos/150/100" alt="overlay"/>
-          </div>
+          <OverlayContext.Provider value={{overlay,setOverlay}}>
+            <Overlay/>
+          </OverlayContext.Provider>
           <Text Text="RESOLUTION" Color="#a693b9" Size="1rem"></Text>
-          <DropDown options={resolutions_list}></DropDown>
-          <Button Text="Export"></Button>
+          {/* <DropDown options={resolutions_list} name="resolutions"></DropDown> */}
+          <Button Text="Export" onClick={changeLayer1}></Button>
         </div>
     </div>
     </div>
