@@ -17,7 +17,7 @@ function Image({src,position}) {
     if (overlay === position) {
         return (
             <div className='image'>
-                <img src={src} alt="Lights"/>
+                <img src={src} alt="Lights" height={100} width={150} />
                 <input type="checkbox" id="vehicle1" name="vehicle1" checked onChange={handleChange}/>
             </div>
         )
@@ -26,7 +26,7 @@ function Image({src,position}) {
     {
       return (
         <div className='image'>
-            <img src={src} alt="Lights"/>
+            <img src={src} alt="Lights" height={100} width={150}/>
             <input type="checkbox" id="vehicle1" name="vehicle1" onChange={handleChange}/>
         </div>
       )

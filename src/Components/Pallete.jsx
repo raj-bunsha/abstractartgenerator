@@ -34,7 +34,7 @@ function Pallete() {
   {
     let index=-1;
     index=color_palette_names.indexOf(e.target.value)
-    console.log(index,layer)
+    // console.log(index,layer)
     layer["pallete"]=index
     setLayer(layer)
     setRequest({...request,"pallete":layer["pallete"]})
