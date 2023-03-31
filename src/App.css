@@ -48,3 +48,8 @@
   gap: 0.5rem;
   align-self: center;
 }
+.image
+{
+	display:flex;
+	flex-direction:column;
+}
